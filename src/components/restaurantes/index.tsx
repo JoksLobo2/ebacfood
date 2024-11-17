@@ -1,29 +1,48 @@
-import sushijpg from '../../assets/images/sushi.png'
+import Tag from '../Tag'
 import {
-  ListContainer,
-  List,
-  Item,
-  ItemImg,
-  ItemTitle,
-  Itemtext
+  Card,
+  CardDescription,
+  CardTitle,
+  CardButton,
+  Infos,
+  Ranking,
+  CardIcon,
+  TitleContainer
 } from './styles'
 
-const Restaurantes = () => (
-  <div>
-    <ListContainer>
-      <List>
-        <Item>
-          <ItemImg src={sushijpg} alt="" />
-          <ItemTitle>Hioki Sushi</ItemTitle>
-          <Itemtext>
-            Peça já o melhor da culinária japonesa no conforto da sua casa!
-            Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis.
-            Entrega rápida, embalagens cuidadosas e qualidade
-            garantida.Experimente o Japão sem sair do lar com nosso delivery!
-          </Itemtext>
-        </Item>
-      </List>
-    </ListContainer>
-  </div>
+type Props = {
+  title: string
+  description: string
+  rate: string[]
+  infos: string[]
+  image: string
+  icon: string
+}
+
+const Restaurantes = ({
+  title,
+  description,
+  infos,
+  image,
+  rate,
+  icon
+}: Props) => (
+  <Card>
+    <img src={image} alt="Hioki Sushi" />
+    <Infos>
+      {infos.map((info) => (
+        <Tag key={info}>{info}</Tag>
+      ))}
+    </Infos>
+    <TitleContainer>
+      <CardTitle>{title}</CardTitle>
+      <Ranking>
+        {rate}
+        <CardIcon src={icon} />
+      </Ranking>
+    </TitleContainer>
+    <CardDescription>{description}</CardDescription>
+    <CardButton type="button">Saiba Mais</CardButton>
+  </Card>
 )
 export default Restaurantes

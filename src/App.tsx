@@ -1,19 +1,19 @@
 import Header from './components/header'
-import { GlobalCss, Container } from './styles'
+import { GlobalCss } from './styles'
 
-import Restaurantes from './components/restaurantes'
+import RestaurantesList from './components/RestaurantesList'
 
 function App() {
   return (
-    <Container>
+    <>
       <GlobalCss />
-      <div className="container">
+      <div>
         <Header />
       </div>
       <div>
-        <Restaurantes />
+        <RestaurantesList title="" />
       </div>
-    </Container>
+    </>
   )
 }
 

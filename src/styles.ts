@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const cores = {
   rosa: '#E66767',
@@ -21,14 +21,8 @@ export const GlobalCss = createGlobalStyle`
   }
 
   .container{
-    max-width:1366px;
+    max-width:1024px;
     width:100%;
     margin:0 auto;
   }
-`
-export const Container = styled.div`
-  max-width: 1366px;
-  height: 2148px;
-  width: 100%;
-  margin: 0 auto;
 `
