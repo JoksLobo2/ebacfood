@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
+import { Link } from 'react-router-dom'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
@@ -66,4 +67,11 @@ export const TitleContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 8px;
+`
+export const StyledLink = styled(Link)`
+  color: white;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 `

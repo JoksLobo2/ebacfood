@@ -1,19 +1,17 @@
-import Header from './components/header'
+import { BrowserRouter } from 'react-router-dom'
 import { GlobalCss } from './styles'
-
-import RestaurantesList from './components/RestaurantesList'
+import Footer from './components/Footer'
+import Rotas from './routes'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalCss />
       <div>
-        <Header />
+        <Rotas />
       </div>
-      <div>
-        <RestaurantesList title="" />
-      </div>
-    </>
+      <Footer />
+    </BrowserRouter>
   )
 }
 

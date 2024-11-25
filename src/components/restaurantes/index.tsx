@@ -7,13 +7,14 @@ import {
   Infos,
   Ranking,
   CardIcon,
-  TitleContainer
+  TitleContainer,
+  StyledLink
 } from './styles'
 
 type Props = {
   title: string
   description: string
-  rate: string[]
+  rate: string
   infos: string[]
   image: string
   icon: string
@@ -42,7 +43,9 @@ const Restaurantes = ({
       </Ranking>
     </TitleContainer>
     <CardDescription>{description}</CardDescription>
-    <CardButton type="button">Saiba Mais</CardButton>
+    <CardButton type="button">
+      <StyledLink to="/restaurante">Saiba mais</StyledLink>
+    </CardButton>
   </Card>
 )
 export default Restaurantes

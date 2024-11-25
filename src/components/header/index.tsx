@@ -1,10 +1,13 @@
 import logo from '../../assets/images/logo.png'
 import { HeaderBar, Title, Logo } from './styles'
+import { Link } from 'react-router-dom'
 
 const Header = () => (
   <>
     <HeaderBar>
-      <Logo src={logo} />
+      <Link to="/">
+        <Logo src={logo} />
+      </Link>
       <Title>
         Viva experiências gastronômicas <br /> no conforto da sua casa
       </Title>
