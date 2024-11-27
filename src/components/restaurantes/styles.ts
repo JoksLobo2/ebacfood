@@ -8,7 +8,7 @@ export const Card = styled.div`
   margin-bottom: 48px;
   border: 1px solid ${cores.rosa};
   width: 472px;
-  height: 400px;
+  height: 410px;
   position: relative;
 
   ${TagContainer} {
