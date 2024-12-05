@@ -6,7 +6,6 @@ import {
   CardButton,
   Infos,
   Ranking,
-  CardIcon,
   TitleContainer,
   StyledLink
 } from './styles'
@@ -14,10 +13,11 @@ import {
 type Props = {
   title: string
   description: string
-  rate: string
+  rate: number
   infos: string[]
   image: string
   icon: string
+  id: number
 }
 
 const Restaurantes = ({
@@ -26,26 +26,37 @@ const Restaurantes = ({
   infos,
   image,
   rate,
-  icon
-}: Props) => (
-  <Card>
-    <img src={image} alt="Hioki Sushi" />
-    <Infos>
-      {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
-      ))}
-    </Infos>
-    <TitleContainer>
-      <CardTitle>{title}</CardTitle>
-      <Ranking>
-        {rate}
-        <CardIcon src={icon} />
-      </Ranking>
-    </TitleContainer>
-    <CardDescription>{description}</CardDescription>
-    <CardButton type="button">
-      <StyledLink to="/restaurante">Saiba mais</StyledLink>
-    </CardButton>
-  </Card>
-)
+  icon,
+  id
+}: Props) => {
+  const getDescription = (description: string) => {
+    if (description.length > 233) {
+      return description.slice(0, 233) + '...'
+    }
+
+    return description
+  }
+
+  return (
+    <Card to={`/restaurante/${id}`}>
+      <img src={image} alt="Hioki Sushi" />
+      <Infos>
+        {infos.map((info) => (
+          <Tag key={info}>{info}</Tag>
+        ))}
+      </Infos>
+      <TitleContainer>
+        <CardTitle>{title}</CardTitle>
+        <Ranking>
+          {rate}
+          <img src={icon} />
+        </Ranking>
+      </TitleContainer>
+      <CardDescription>{getDescription(description)}</CardDescription>
+      <CardButton type="button">
+        <StyledLink to={`/restaurante/${id}`}>Saiba mais</StyledLink>
+      </CardButton>
+    </Card>
+  )
+}
 export default Restaurantes

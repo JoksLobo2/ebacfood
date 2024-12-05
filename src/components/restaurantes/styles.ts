@@ -3,13 +3,23 @@ import { cores } from '../../styles'
 import { Link } from 'react-router-dom'
 import { TagContainer } from '../Tag/styles'
 
-export const Card = styled.div`
+export const Card = styled(Link)`
   background-color: ${cores.branco};
   margin-bottom: 48px;
   border: 1px solid ${cores.rosa};
   width: 472px;
   height: 410px;
   position: relative;
+  text-decoration: none;
+  color: ${cores.rosa};
+  display: block;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 217px;
+    object-fit: cover;
+  }
 
   ${TagContainer} {
     margin-right: 8px;
@@ -55,11 +65,12 @@ export const Ranking = styled.div`
   font-weight: 700;
   display: flex;
   align-items: center;
-`
-export const CardIcon = styled.img`
-  width: 21px;
-  height: 21px;
-  margin-left: 8px;
+
+  img {
+    width: 21px;
+    height: 21px;
+    margin-left: 8px;
+  }
 `
 export const TitleContainer = styled.div`
   width: 460px;

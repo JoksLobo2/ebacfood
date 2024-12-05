@@ -7,4 +7,10 @@ export const List = styled.ul`
   grid-template-columns: 1fr 1fr;
   column-gap: 80px;
   margin-top: 80px;
+
+  icon {
+    width: 21px;
+    height: 21px;
+    margin-left: 8px;
+  }
 `
