@@ -26,3 +26,9 @@ export const SectionTitle = styled.h3`
   line-height: 22px;
   font-weight: 900;
 `
+export const CartButton = styled.a`
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 900;
+  cursor: pointer;
+`

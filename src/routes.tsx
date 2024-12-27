@@ -4,6 +4,7 @@ import Restaurante from './pages/Restaurante'
 import Header from './components/header'
 import RestauranteHeader from './components/HeaderTratoria'
 import BannerTratoria from './components/BannerTratoria'
+import Cart from './components/Cart'
 
 const Rotas = () => (
   <Routes>
@@ -21,6 +22,7 @@ const Rotas = () => (
       element={
         <>
           <RestauranteHeader />
+          <Cart />
           <BannerTratoria />
           <Restaurante />
         </>
