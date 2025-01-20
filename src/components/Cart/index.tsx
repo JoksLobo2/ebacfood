@@ -6,6 +6,8 @@ import { RootReducer } from '../../store'
 
 import { close } from '../../store/reducers/cart'
 
+import { open } from '../../store/reducers/checkout'
+
 import {
   Overlay,
   CartContainer,
@@ -22,6 +24,10 @@ const Cart = () => {
 
   const closeCart = () => {
     dispatch(close())
+  }
+
+  const openCheckout = () => {
+    dispatch(open())
   }
 
   return (
@@ -58,7 +64,11 @@ const Cart = () => {
           <Prices>Valor </Prices>
           <Prices> Total R$182,70</Prices>
         </PricesContainer>
-        <button type="button" title="Clique aqui para continuar com a entrega">
+        <button
+          onClick={openCheckout}
+          type="button"
+          title="Clique aqui para continuar com a entrega"
+        >
           Continuar com a entrega
         </button>
       </Sidebar>

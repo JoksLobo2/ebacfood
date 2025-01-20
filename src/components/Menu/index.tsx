@@ -1,72 +1,42 @@
-import { useState } from 'react'
-import { FoodList, Modal, ModalContent, ModalImg } from './styles'
+import { FoodList } from './styles'
+import MenuL from '../MenuL'
+import { Restaurante, Prato } from '../../pages/Restaurante'
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
-import { Food } from '../../pages/Restaurante'
-
-import pizza from '../../assets/images/pizza.png'
-import close from '../../assets/images/close 1.png'
-import MenuL from '../MenuList'
-
-type Props = {
+export type Props = {
   title: string
-  foods: Food[]
+  foods: Restaurante[]
 }
 
-const Menu = ({ foods }: Props) => {
-  const [modalEstaAberta, setModalEstaAberta] = useState(false)
+const Menu = ({ title }: Props) => {
+  const { id } = useParams<{ id: string }>()
+
+  const [cardapio, setCardapio] = useState<Prato[]>()
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((data) => setCardapio(data.cardapio)) // Acessa o array de itens dentro da resposta
+  }, [id])
 
   return (
-    <>
-      <div className="container">
-        <FoodList>
-          {foods.map((food) => (
+    <div className="container">
+      <FoodList>
+        {Array.isArray(cardapio) && cardapio.length > 0 ? (
+          cardapio.map((prato) => (
             <MenuL
-              key={food.id}
-              title={food.titulo}
-              description={food.descricao}
-              image={food.capa}
+              key={prato.id}
+              title={prato.nome}
+              description={prato.descricao}
+              image={prato.foto}
             />
-          ))}
-        </FoodList>
-      </div>
-      <Modal className={modalEstaAberta ? 'visible' : ''}>
-        <ModalContent className="container">
-          <div>
-            <ModalImg src={pizza} alt="" />
-            <div>
-              <div>
-                <h2>Pizza Marguerita</h2>
-                <img
-                  src={close}
-                  alt=""
-                  onClick={() => setModalEstaAberta(false)}
-                />
-              </div>
-              <p>
-                A pizza Margherita é uma pizza clássica da culinária italiana,
-                reconhecida por sua simplicidade e sabor inigualável. Ela é
-                feita com uma base de massa fina e crocante, coberta com molho
-                de tomate fresco, queijo mussarela de alta qualidade, manjericão
-                fresco e azeite de oliva extra-virgem. A combinação de sabores é
-                perfeita, com o molho de tomate suculento e ligeiramente ácido,
-                o queijo derretido e cremoso e as folhas de manjericão frescas,
-                que adicionam um toque de sabor herbáceo. É uma pizza simples,
-                mas deliciosa, que agrada a todos os paladares e é uma ótima
-                opção para qualquer ocasião.
-              </p>
-              <p>Serve: de 2 a 3 pessoas</p>
-              <button type="button" onClick={() => setModalEstaAberta(true)}>
-                Adcionar ao carrinho - R$60,90
-              </button>
-            </div>
-          </div>
-        </ModalContent>
-        <div
-          className="overlay"
-          onClick={() => setModalEstaAberta(false)}
-        ></div>
-      </Modal>
-    </>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
+      </FoodList>
+    </div>
   )
 }
 
