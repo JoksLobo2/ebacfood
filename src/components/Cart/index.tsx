@@ -18,7 +18,7 @@ import {
 } from './styles'
 
 const Cart = () => {
-  const { isOpen } = useSelector((state: RootReducer) => state.cart)
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
 
   const dispatch = useDispatch()
 
@@ -35,30 +35,16 @@ const Cart = () => {
       <Overlay onClick={closeCart} />
       <Sidebar>
         <ul>
-          <CartItem>
-            <img src={pizza} alt="imagem de uma pizza" />
-            <div>
-              <h3>Pizza Marguerita</h3>
-              <span>R$60,90</span>
-            </div>
-            <button type="button" />
-          </CartItem>
-          <CartItem>
-            <img src={pizza} alt="imagem de uma pizza" />
-            <div>
-              <h3>Pizza Marguerita</h3>
-              <span>R$60,90</span>
-            </div>
-            <button type="button" />
-          </CartItem>
-          <CartItem>
-            <img src={pizza} alt="imagem de uma pizza" />
-            <div>
-              <h3>Pizza Marguerita</h3>
-              <span>R$60,90</span>
-            </div>
-            <button type="button" />
-          </CartItem>
+          {items.map((item) => (
+            <CartItem key={item.id}>
+              <img src={item.foto} alt="imagem de uma pizza" />
+              <div>
+                <h3>{item.nome}</h3>
+                <span>{item.preco}</span>
+              </div>
+              <button type="button" />
+            </CartItem>
+          ))}
         </ul>
         <PricesContainer>
           <Prices>Valor </Prices>
