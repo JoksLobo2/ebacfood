@@ -6,7 +6,7 @@ import { Card, CardImg, CardTitle, CardDescription, CardButton } from './styles'
 import { Modal, ModalContent, ModalImg } from '../../components/Menu/styles'
 
 import close from '../../assets/images/close 1.png'
-import { Restaurante, Prato } from '../../pages/Restaurante' // Certifique-se de importar Prato também
+import { Restaurante, Prato } from '../../pages/Restaurante'
 import { add, open } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
 
@@ -14,13 +14,20 @@ type Props = {
   title: string
   description: string
   image: string
-  foods?: Restaurante[]
   id: number
-  preco: string
+  preco: number // Ajustado para número
   porcao: string
+  foods?: Restaurante[]
 }
 
-const MenuL = ({ title, description, image, foods }: Props) => {
+export const formataPreco = (preco: number): string => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
+
+const MenuL = ({ title, description, image, porcao, preco, foods }: Props) => {
   const dispatch = useDispatch()
 
   const { id } = useParams<{ id: string }>()
@@ -32,7 +39,7 @@ const MenuL = ({ title, description, image, foods }: Props) => {
   useEffect(() => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then((res) => res.json())
-      .then((data) => setCardapio(data.cardapio)) // Acessa o array de itens dentro da resposta
+      .then((data) => setCardapio(data.cardapio))
       .catch((error) => console.error('Erro ao buscar cardápio:', error))
   }, [id])
 
@@ -51,7 +58,7 @@ const MenuL = ({ title, description, image, foods }: Props) => {
   const addToCart = () => {
     if (selectedFood) {
       dispatch(add(selectedFood))
-      setModalEstaAberta(false) // Fechar a modal após adicionar ao carrinho
+      setModalEstaAberta(false)
     } else {
       console.error('selectedFood is undefined or null')
     }
@@ -73,9 +80,9 @@ const MenuL = ({ title, description, image, foods }: Props) => {
                 nome: title,
                 descricao: description,
                 foto: image,
-                id: ,
-                preco: 0,
-                porcao: ''
+                id: Number(id),
+                preco: preco,
+                porcao: porcao
               })
             }
           >
@@ -101,7 +108,7 @@ const MenuL = ({ title, description, image, foods }: Props) => {
                   <p>{selectedFood.descricao}</p>
                   <p>{selectedFood.porcao}</p>
                   <button type="button" onClick={addToCart}>
-                    Adicionar ao carrinho - {selectedFood.preco}
+                    Adicionar ao carrinho - {formataPreco(selectedFood.preco)}
                   </button>
                 </div>
               </>

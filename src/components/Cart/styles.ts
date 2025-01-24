@@ -55,6 +55,10 @@ export const PricesContainer = styled.div`
   justify-content: space-between;
   margin-top: 40px;
   margin-bottom: 16px;
+
+  button {
+    cursor: pointer;
+  }
 `
 export const CartItem = styled.li`
   background-color: ${cores.branco};
@@ -95,5 +99,6 @@ export const CartItem = styled.li`
     bottom: 0;
     right: 0;
     margin: 8px;
+    cursor: pointer;
   }
 `

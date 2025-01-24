@@ -30,6 +30,9 @@ const Menu = ({ title }: Props) => {
               title={prato.nome}
               description={prato.descricao}
               image={prato.foto}
+              id={prato.id}
+              preco={prato.preco}
+              porcao={prato.porcao}
             />
           ))
         ) : (
