@@ -24,17 +24,7 @@ const Menu = ({ title }: Props) => {
     <div className="container">
       <FoodList>
         {Array.isArray(cardapio) && cardapio.length > 0 ? (
-          cardapio.map((prato) => (
-            <MenuL
-              key={prato.id}
-              title={prato.nome}
-              description={prato.descricao}
-              image={prato.foto}
-              id={prato.id}
-              preco={prato.preco}
-              porcao={prato.porcao}
-            />
-          ))
+          cardapio.map((prato) => <MenuL key={prato.id} food={prato} />)
         ) : (
           <p>Loading...</p>
         )}
