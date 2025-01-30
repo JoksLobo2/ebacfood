@@ -1,12 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux'
 
-import pizza from '../../assets/images/pizza.png'
-
 import { RootReducer } from '../../store'
 
 import { close, remove } from '../../store/reducers/cart'
 
-import { open } from '../../store/reducers/checkout'
+import { openCheck } from '../../store/reducers/checkout'
 
 import { formataPreco } from '../MenuL/index'
 
@@ -28,8 +26,9 @@ const Cart = () => {
     dispatch(close())
   }
 
-  const openCheckout = () => {
-    dispatch(open())
+  const openCheckoutAndCloseCart = () => {
+    dispatch(openCheck())
+    dispatch(close())
   }
 
   const getTotalPrice = () => {
@@ -64,7 +63,7 @@ const Cart = () => {
             <Prices> {formataPreco(getTotalPrice())}</Prices>
           </PricesContainer>
           <button
-            onClick={openCheckout}
+            onClick={openCheckoutAndCloseCart}
             type="button"
             title="Clique aqui para continuar com a entrega"
           >

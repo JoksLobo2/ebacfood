@@ -12,14 +12,14 @@ const checkoutSlice = createSlice({
   name: 'checkout',
   initialState,
   reducers: {
-    open: (state) => {
+    openCheck: (state) => {
       state.isOpen = true
     },
-    close: (state) => {
+    closeCheck: (state) => {
       state.isOpen = false
     }
   }
 })
 
-export const { close, open } = checkoutSlice.actions
+export const { closeCheck, openCheck } = checkoutSlice.actions
 export default checkoutSlice.reducer

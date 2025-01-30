@@ -12,7 +12,7 @@ export const Overlay = styled.div`
   opacity: 0.7;
 `
 
-export const CheckoutContainer = styled.div`
+export const PaymentContainer = styled.div`
   top: 0;
   left: 0;
   width: 100%;
@@ -25,9 +25,16 @@ export const CheckoutContainer = styled.div`
   &.is-open {
     display: flex;
   }
+
+  h2 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    margin-bottom: 16px;
+  }
 `
 
-export const CheckoutCard = styled.div`
+export const PaymentCard = styled.div`
   background-color: ${cores.rosa};
   width: 360px;
   height: 1624px;
@@ -55,7 +62,7 @@ export const InputGroup = styled.div`
     margin-bottom: 8px;
   }
 `
-export const ZipInput = styled.li`
+export const CardInput = styled.li`
   display: flex;
   gap: 32px;
 
@@ -64,9 +71,21 @@ export const ZipInput = styled.li`
     -webkit-appearance: none;
     margin: 0;
   }
+
+  .card-number {
+    width: 228px;
+  }
+
+  .cvv {
+    width: 80px;
+  }
+
+  .expires {
+    width: 155px;
+  }
 `
 
-export const CheckoutButton = styled.button`
+export const PaymentButton = styled.button`
   width: 344px;
   height: 24px;
   margin-bottom: 8px;

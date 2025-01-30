@@ -5,6 +5,7 @@ import Header from './components/header'
 import RestauranteHeader from './components/HeaderTratoria'
 import Cart from './components/Cart'
 import Card from './components/Card'
+import Payment from './components/Payment'
 
 const Rotas = () => {
   return (
@@ -26,10 +27,10 @@ const Rotas = () => {
             <Cart />
             <Restaurante />
             <Card />
+            <Payment />
           </>
         }
       />
-      <Route path="/checkout" element={<Card />} />
     </Routes>
   )
 }
