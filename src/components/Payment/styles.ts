@@ -41,6 +41,14 @@ export const PaymentCard = styled.div`
   position: relative;
   z-index: 2;
   padding: 32px 8px 0 8px;
+
+  h2 {
+    color: ${cores.branco};
+  }
+
+  p {
+    color: ${cores.branco};
+  }
 `
 
 export const InputGroup = styled.div`

@@ -16,6 +16,9 @@ import {
   PricesContainer,
   CartItem
 } from './styles'
+import { StyledLink } from '../restaurantes/styles'
+import { Link } from 'react-router-dom'
+import Payment from '../Payment'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -67,8 +70,9 @@ const Cart = () => {
             type="button"
             title="Clique aqui para continuar com a entrega"
           >
-            Continuar com a entrega
+            <>Continuar com a entrega</>
           </button>
+          <Payment valorTotal={formataPreco(getTotalPrice())} />
         </Sidebar>
       </CartContainer>
     </>

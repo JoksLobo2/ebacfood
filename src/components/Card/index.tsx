@@ -13,16 +13,21 @@ import { RootReducer } from '../../store'
 import { closeCheck } from '../../store/reducers/checkout'
 import { openP } from '../../store/reducers/payment'
 import { open } from '../../store/reducers/cart'
+import { usePurchaseMutation } from '../../services/api'
+import { setOrderId } from '../../store/reducers/order'
 
 const Card = () => {
   const { isOpen } = useSelector((state: RootReducer) => state.checkout)
+  const [purchase, { isLoading, isError, data, isSuccess }] =
+    usePurchaseMutation()
+
   const dispatch = useDispatch()
 
   const closeCheckout = () => {
     dispatch(closeCheck())
   }
 
-  const closeCheckoutAndOPenPayment = () => {
+  const closeCheckoutAndOpenPayment = () => {
     dispatch(openP())
     dispatch(closeCheck())
   }
@@ -51,11 +56,33 @@ const Card = () => {
         .min(9, 'O CEP precisa de 9 caracteres')
         .max(9, 'O CEP não pode ter mais que 9 caracteres')
         .required('Campo obrigatório'),
-      number: Yup.string().required('Campo obrigatório'),
+      number: Yup.number().required('Campo obrigatório'),
       complement: Yup.string()
     }),
-    onSubmit: (values) => {
-      console.log(values)
+    onSubmit: async (values) => {
+      const result = await purchase({
+        delivery: {
+          receiver: values.name,
+          address: {
+            description: values.adress,
+            city: values.city,
+            zipCode: values.zipCode,
+            number: Number(values.number),
+            complement: values.complement
+          }
+        },
+        products: [
+          {
+            id: 1,
+            price: 10
+          }
+        ]
+      })
+
+      if (result.data) {
+        console.log(result.data)
+        dispatch(setOrderId(result.data.orderId))
+      }
     }
   })
 
@@ -154,7 +181,7 @@ const Card = () => {
           </InputGroup>
           <CheckoutButton
             type="submit"
-            onClick={closeCheckoutAndOPenPayment}
+            onClick={closeCheckoutAndOpenPayment}
             className="firstButton"
           >
             Continuar com o pagamento
