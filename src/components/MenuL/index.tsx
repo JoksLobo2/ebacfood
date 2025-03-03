@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { Card, CardImg, CardTitle, CardDescription, CardButton } from './styles'
-import { Modal, ModalContent, ModalImg } from '../../components/Menu/styles'
-
 import close from '../../assets/images/close 1.png'
 import { Prato } from '../../pages/Restaurante'
 import { add, open } from '../../store/reducers/cart'
+
+import { Card, CardImg, CardTitle, CardDescription, CardButton } from './styles'
+import { Modal, ModalContent, ModalImg } from '../../components/Menu/styles'
 
 export const formataPreco = (preco: number): string => {
   return new Intl.NumberFormat('pt-BR', {

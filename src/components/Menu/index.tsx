@@ -1,8 +1,11 @@
-import { FoodList } from './styles'
-import MenuL from '../MenuL'
-import { Restaurante, Prato } from '../../pages/Restaurante'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+
+import { Restaurante, Prato } from '../../pages/Restaurante'
+
+import MenuL from '../MenuL'
+
+import { FoodList } from './styles'
 
 export type Props = {
   title: string

@@ -1,7 +1,8 @@
 import { Restaurants } from '../../pages/Home'
 import Restaurantes from '../restaurantes'
-import { List, Container } from './styles'
+
 import icon from '../../assets/images/estrela.png'
+import { List, Container } from './styles'
 
 type Props = {
   title: string

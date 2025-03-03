@@ -1,4 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
+import { useFormik } from 'formik'
+
+import { RootReducer } from '../../store'
+import { closeP } from '../../store/reducers/payment'
+import { openCheck } from '../../store/reducers/checkout'
+import { openConfirm } from '../../store/reducers/confirm'
+import { setOrderId } from '../../store/reducers/order'
+import { usePurchaseMutation } from '../../services/api'
+import * as Yup from 'yup'
+
 import {
   InputGroup,
   Overlay,
@@ -7,15 +17,6 @@ import {
   PaymentContainer,
   CardInput
 } from './styles'
-
-import { RootReducer } from '../../store'
-import { closeP } from '../../store/reducers/payment'
-import { openCheck } from '../../store/reducers/checkout'
-import { openConfirm } from '../../store/reducers/confirm'
-import { setOrderId } from '../../store/reducers/order'
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
-import { usePurchaseMutation } from '../../services/api'
 
 interface PaymentProps {
   valorTotal: string

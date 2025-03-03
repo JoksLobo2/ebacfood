@@ -1,10 +1,12 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import logo from '../../assets/images/logo.png'
-
 import { open } from '../../store/reducers/cart'
+import { Restaurante } from '../../pages/Restaurante'
+import { RootReducer } from '../../store'
 
+import logo from '../../assets/images/logo.png'
 import {
   HeaderBar,
   SectionTitle,
@@ -13,10 +15,6 @@ import {
   Italiana,
   RestauranteName
 } from './styles'
-import { useEffect, useState } from 'react'
-
-import { Restaurante } from '../../pages/Restaurante'
-import { RootReducer } from '../../store'
 
 const RestauranteHeader = () => {
   const dispatch = useDispatch()

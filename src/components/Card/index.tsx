@@ -1,6 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+
+import { RootReducer } from '../../store'
+import { closeCheck } from '../../store/reducers/checkout'
+import { openP } from '../../store/reducers/payment'
+import { open } from '../../store/reducers/cart'
+import { usePurchaseMutation } from '../../services/api'
+import { setOrderId } from '../../store/reducers/order'
+
 import {
   CheckoutContainer,
   InputGroup,
@@ -9,12 +17,6 @@ import {
   ZipInput,
   CheckoutButton
 } from './styles'
-import { RootReducer } from '../../store'
-import { closeCheck } from '../../store/reducers/checkout'
-import { openP } from '../../store/reducers/payment'
-import { open } from '../../store/reducers/cart'
-import { usePurchaseMutation } from '../../services/api'
-import { setOrderId } from '../../store/reducers/order'
 
 const Card = () => {
   const { isOpen } = useSelector((state: RootReducer) => state.checkout)

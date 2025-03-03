@@ -8,6 +8,8 @@ import { openCheck } from '../../store/reducers/checkout'
 
 import { formataPreco } from '../MenuL/index'
 
+import Payment from '../Payment'
+
 import {
   Overlay,
   CartContainer,
@@ -16,7 +18,6 @@ import {
   PricesContainer,
   CartItem
 } from './styles'
-import Payment from '../Payment'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
