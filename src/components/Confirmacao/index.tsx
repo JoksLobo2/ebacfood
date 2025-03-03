@@ -9,7 +9,6 @@ import {
   CheckoutCard,
   CheckoutButton
 } from './styles'
-import { usePurchaseMutation } from '../../services/api'
 
 const Confirmacao = () => {
   const { isOpen } = useSelector((state: RootReducer) => state.confirm)
@@ -20,6 +19,8 @@ const Confirmacao = () => {
   }
 
   const orderId = useSelector((state: RootReducer) => state.order.orderId)
+
+  console.log('Order ID in Confirmacao:', orderId)
 
   return (
     <CheckoutContainer className={isOpen ? 'is-open' : ''}>

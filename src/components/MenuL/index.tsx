@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { Card, CardImg, CardTitle, CardDescription, CardButton } from './styles'
 import { Modal, ModalContent, ModalImg } from '../../components/Menu/styles'
@@ -8,7 +7,6 @@ import { Modal, ModalContent, ModalImg } from '../../components/Menu/styles'
 import close from '../../assets/images/close 1.png'
 import { Prato } from '../../pages/Restaurante'
 import { add, open } from '../../store/reducers/cart'
-import { RootReducer } from '../../store'
 
 export const formataPreco = (preco: number): string => {
   return new Intl.NumberFormat('pt-BR', {
@@ -44,8 +42,6 @@ const MenuL = ({ food }: { food: Prato }) => {
     }
     return description
   }
-
-  const { items } = useSelector((state: RootReducer) => state.cart)
 
   return (
     <>

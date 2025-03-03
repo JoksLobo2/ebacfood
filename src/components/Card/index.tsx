@@ -18,8 +18,7 @@ import { setOrderId } from '../../store/reducers/order'
 
 const Card = () => {
   const { isOpen } = useSelector((state: RootReducer) => state.checkout)
-  const [purchase, { isLoading, isError, data, isSuccess }] =
-    usePurchaseMutation()
+  const [purchase] = usePurchaseMutation()
 
   const dispatch = useDispatch()
 
@@ -92,6 +91,19 @@ const Card = () => {
 
     if (estaAlterado && estaInvalido) return message
     return ''
+  }
+
+  const continuarPagamento = () => {
+    const formData = {
+      name: form.values.name,
+      adress: form.values.adress,
+      city: form.values.city,
+      zipCode: form.values.zipCode,
+      number: form.values.number,
+      complement: form.values.complement
+    }
+    sessionStorage.setItem('checkoutData', JSON.stringify(formData))
+    closeCheckoutAndOpenPayment()
   }
 
   return (
@@ -180,8 +192,10 @@ const Card = () => {
             </ul>
           </InputGroup>
           <CheckoutButton
-            type="submit"
-            onClick={closeCheckoutAndOpenPayment}
+            onClick={(e) => {
+              e.preventDefault() // Previne a submissão do formulário
+              continuarPagamento()
+            }}
             className="firstButton"
           >
             Continuar com o pagamento

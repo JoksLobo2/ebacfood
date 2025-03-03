@@ -16,8 +16,6 @@ import {
   PricesContainer,
   CartItem
 } from './styles'
-import { StyledLink } from '../restaurantes/styles'
-import { Link } from 'react-router-dom'
 import Payment from '../Payment'
 
 const Cart = () => {

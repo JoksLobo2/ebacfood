@@ -12,11 +12,10 @@ import { RootReducer } from '../../store'
 import { closeP } from '../../store/reducers/payment'
 import { openCheck } from '../../store/reducers/checkout'
 import { openConfirm } from '../../store/reducers/confirm'
+import { setOrderId } from '../../store/reducers/order'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
-
-import { formataPreco } from '../MenuL'
 
 interface PaymentProps {
   valorTotal: string
@@ -26,7 +25,7 @@ const Payment = ({ valorTotal }: PaymentProps) => {
   const { isOpen } = useSelector((state: RootReducer) => state.payment)
   const dispatch = useDispatch()
 
-  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
+  const [purchase] = usePurchaseMutation()
 
   const closePayment = () => {
     dispatch(closeP())
@@ -54,7 +53,9 @@ const Payment = ({ valorTotal }: PaymentProps) => {
       name: Yup.string()
         .min(5, 'O nome precisa de no mínimo 5 caracteres')
         .required('Campo obrigatório'),
-      cardnumber: Yup.string().required('Campo obrigatório'),
+      cardnumber: Yup.string()
+        .min(16, 'O número do cartão deve ter 16 caracteres')
+        .required('Campo obrigatório'),
       safetycode: Yup.string()
         .min(3, 'O código de segurança deve ter 3 caracteres')
         .max(3, 'O código de segurança só pode ter 3 caracteres')
@@ -62,12 +63,26 @@ const Payment = ({ valorTotal }: PaymentProps) => {
       expiremonth: Yup.string().required('Campo obrigatório'),
       expireyear: Yup.string().required('Campo onrigatório')
     }),
-    onSubmit: (values) => {
-      purchase({
+    onSubmit: async (values) => {
+      const checkoutData = JSON.parse(
+        sessionStorage.getItem('checkoutData') || '{}'
+      )
+
+      const payload = {
+        delivery: {
+          receiver: checkoutData.name,
+          address: {
+            description: checkoutData.adress,
+            city: checkoutData.city,
+            zipCode: checkoutData.zipCode.replace('-', ''), // Removendo o hífen do CEP
+            number: Number(checkoutData.number),
+            complement: checkoutData.complement
+          }
+        },
         payment: {
           card: {
             name: values.name,
-            number: values.cardnumber,
+            number: values.cardnumber.toString(), // Número do cartão como string
             code: Number(values.safetycode),
             expires: {
               month: Number(values.expiremonth),
@@ -75,8 +90,24 @@ const Payment = ({ valorTotal }: PaymentProps) => {
             }
           }
         },
-        products: []
-      })
+        products: [
+          {
+            id: 1,
+            price: 0
+          }
+        ]
+      }
+
+      const result = await purchase(payload)
+      console.log('Payload:', payload)
+      console.log('Purchase result:', result)
+
+      if (result.data) {
+        dispatch(setOrderId(result.data.orderId))
+        console.log('Order ID:', result.data.orderId)
+        dispatch(openConfirm())
+        closePayment()
+      }
     }
   })
 
@@ -107,7 +138,7 @@ const Payment = ({ valorTotal }: PaymentProps) => {
                     onChange={form.handleChange}
                     onBlur={form.handleBlur}
                   />
-                  <small>{(getErrorMessage('name'), form.errors.name)}</small>
+                  <small>{getErrorMessage('name', form.errors.name)}</small>
                 </li>
                 <CardInput>
                   <li>
@@ -122,7 +153,7 @@ const Payment = ({ valorTotal }: PaymentProps) => {
                       onBlur={form.handleBlur}
                     />
                     <small>
-                      {(getErrorMessage('cardnumber'), form.errors.cardnumber)}
+                      {getErrorMessage('cardnumber', form.errors.cardnumber)}
                     </small>
                   </li>
                   <li>
@@ -137,7 +168,7 @@ const Payment = ({ valorTotal }: PaymentProps) => {
                       onBlur={form.handleBlur}
                     />
                     <small>
-                      {(getErrorMessage('safetycode'), form.errors.safetycode)}
+                      {getErrorMessage('safetycode', form.errors.safetycode)}
                     </small>
                   </li>
                 </CardInput>
@@ -154,10 +185,7 @@ const Payment = ({ valorTotal }: PaymentProps) => {
                       onBlur={form.handleBlur}
                     />
                     <small>
-                      {
-                        (getErrorMessage('expiremonth'),
-                        form.errors.expiremonth)
-                      }
+                      {getErrorMessage('expiremonth', form.errors.expiremonth)}
                     </small>
                   </li>
                   <li>
@@ -172,7 +200,7 @@ const Payment = ({ valorTotal }: PaymentProps) => {
                       onBlur={form.handleBlur}
                     />
                     <small>
-                      {(getErrorMessage('expireyear'), form.errors.expireyear)}
+                      {getErrorMessage('expireyear', form.errors.expireyear)}
                     </small>
                   </li>
                 </CardInput>
@@ -180,6 +208,7 @@ const Payment = ({ valorTotal }: PaymentProps) => {
             </InputGroup>
             <PaymentButton
               onClick={closePaymentOpenConfirm}
+              type="submit"
               className="firstButton"
             >
               Finalizar pagamento
