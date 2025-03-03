@@ -6,8 +6,8 @@ import { closeP } from '../../store/reducers/payment'
 import { openCheck } from '../../store/reducers/checkout'
 import { openConfirm } from '../../store/reducers/confirm'
 import { setOrderId } from '../../store/reducers/order'
-import { usePurchaseMutation } from '../../services/api'
 import * as Yup from 'yup'
+import { usePurchaseMutation } from '../../services/api'
 
 import {
   InputGroup,
@@ -142,68 +142,75 @@ const Payment = ({ valorTotal }: PaymentProps) => {
                   <small>{getErrorMessage('name', form.errors.name)}</small>
                 </li>
                 <CardInput>
-                  <li>
-                    <label htmlFor="cardnumber">Número do cartão</label>
-                    <input
-                      className="card-number"
-                      id="cardnumber"
-                      type="number"
-                      name="cardnumber"
-                      value={form.values.cardnumber}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                    />
-                    <small>
-                      {getErrorMessage('cardnumber', form.errors.cardnumber)}
-                    </small>
-                  </li>
-                  <li>
-                    <label htmlFor="safetycode">CVV</label>
-                    <input
-                      className="cvv"
-                      id="safetycode"
-                      type="number"
-                      name="safetycode"
-                      value={form.values.safetycode}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                    />
-                    <small>
-                      {getErrorMessage('safetycode', form.errors.safetycode)}
-                    </small>
-                  </li>
+                  <ul>
+                    <li>
+                      <label htmlFor="cardnumber">Número do cartão</label>
+                      <input
+                        className="card-number"
+                        id="cardnumber"
+                        type="number"
+                        name="cardnumber"
+                        value={form.values.cardnumber}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage('cardnumber', form.errors.cardnumber)}
+                      </small>
+                    </li>
+                    <li>
+                      <label htmlFor="safetycode">CVV</label>
+                      <input
+                        className="cvv"
+                        id="safetycode"
+                        type="number"
+                        name="safetycode"
+                        value={form.values.safetycode}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage('safetycode', form.errors.safetycode)}
+                      </small>
+                    </li>
+                  </ul>
                 </CardInput>
                 <CardInput>
-                  <li>
-                    <label htmlFor="expiremonth">Mês de vencimento</label>
-                    <input
-                      className="expires"
-                      id="expiremonth"
-                      type="number"
-                      name="expiremonth"
-                      value={form.values.expiremonth}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                    />
-                    <small>
-                      {getErrorMessage('expiremonth', form.errors.expiremonth)}
-                    </small>
-                  </li>
-                  <li>
-                    <label htmlFor="expireyear">Ano de vencimento</label>
-                    <input
-                      className="expires"
-                      id="expireyear"
-                      type="number"
-                      name="expireyear"
-                      value={form.values.expireyear}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                    />
-                    <small>
-                      {getErrorMessage('expireyear', form.errors.expireyear)}
-                    </small>
-                  </li>
+                  <ul>
+                    <li>
+                      <label htmlFor="expiremonth">Mês de vencimento</label>
+                      <input
+                        className="expires"
+                        id="expiremonth"
+                        type="number"
+                        name="expiremonth"
+                        value={form.values.expiremonth}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage(
+                          'expiremonth',
+                          form.errors.expiremonth
+                        )}
+                      </small>
+                    </li>
+                    <li>
+                      <label htmlFor="expireyear">Ano de vencimento</label>
+                      <input
+                        className="expires"
+                        id="expireyear"
+                        type="number"
+                        name="expireyear"
+                        value={form.values.expireyear}
+                        onChange={form.handleChange}
+                        onBlur={form.handleBlur}
+                      />
+                      <small>
+                        {getErrorMessage('expireyear', form.errors.expireyear)}
+                      </small>
+                    </li>
+                  </ul>
                 </CardInput>
               </ul>
             </InputGroup>

@@ -53,9 +53,9 @@ const Restaurantes = ({
         </Ranking>
       </TitleContainer>
       <CardDescription>{getDescription(description)}</CardDescription>
-      <CardButton type="button">
-        <StyledLink to={`/restaurante/${id}`}>Saiba mais</StyledLink>
-      </CardButton>
+      <StyledLink to={`/restaurante/${id}`}>
+        <CardButton type="button">Saiba mais</CardButton>
+      </StyledLink>
     </Card>
   )
 }
