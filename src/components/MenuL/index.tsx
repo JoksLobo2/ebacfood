@@ -4,16 +4,10 @@ import { useDispatch } from 'react-redux'
 import close from '../../assets/images/close 1.png'
 import { Prato } from '../../pages/Restaurante'
 import { add, open } from '../../store/reducers/cart'
+import { parseToBRL } from '../../utils'
 
 import { Card, CardImg, CardTitle, CardDescription, CardButton } from './styles'
 import { Modal, ModalContent, ModalImg } from '../../components/Menu/styles'
-
-export const formataPreco = (preco: number): string => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
-}
 
 const MenuL = ({ food }: { food: Prato }) => {
   const dispatch = useDispatch()
@@ -71,7 +65,7 @@ const MenuL = ({ food }: { food: Prato }) => {
                   <p>{selectedFood.descricao}</p>
                   <p>{selectedFood.porcao}</p>
                   <button type="button" onClick={addToCart}>
-                    Adicionar ao carrinho - {formataPreco(selectedFood.preco)}
+                    Adicionar ao carrinho - {parseToBRL(selectedFood.preco)}
                   </button>
                 </div>
               </>

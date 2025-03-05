@@ -7,7 +7,7 @@ import Cart from './components/Cart'
 import Card from './components/Card'
 import Payment from './components/Payment'
 import Confirmacao from './components/Confirmacao'
-import { formataPreco } from './components/MenuL'
+import { parseToBRL } from '../src/utils'
 import { useSelector } from 'react-redux'
 import { RootReducer } from './store'
 
@@ -39,7 +39,7 @@ const Rotas = () => {
             <Cart />
             <Restaurante />
             <Card />
-            <Payment valorTotal={formataPreco(getTotalPrice())} />
+            <Payment valorTotal={parseToBRL(getTotalPrice())} />
             <Confirmacao />
           </>
         }

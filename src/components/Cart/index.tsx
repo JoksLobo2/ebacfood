@@ -6,7 +6,7 @@ import { close, remove } from '../../store/reducers/cart'
 
 import { openCheck } from '../../store/reducers/checkout'
 
-import { formataPreco } from '../MenuL/index'
+import { parseToBRL } from '../../utils'
 
 import Payment from '../Payment'
 
@@ -54,7 +54,7 @@ const Cart = () => {
                 <img src={item.foto} alt="imagem de uma pizza" />
                 <div>
                   <h3>{item.nome}</h3>
-                  <span>{formataPreco(item.preco)}</span>
+                  <span>{parseToBRL(item.preco)}</span>
                 </div>
                 <button onClick={() => removeItem(item.id)} type="button" />
               </CartItem>
@@ -62,7 +62,7 @@ const Cart = () => {
           </ul>
           <PricesContainer>
             <Prices>Valor total </Prices>
-            <Prices> {formataPreco(getTotalPrice())}</Prices>
+            <Prices> {parseToBRL(getTotalPrice())}</Prices>
           </PricesContainer>
           <button
             onClick={openCheckoutAndCloseCart}
@@ -71,7 +71,7 @@ const Cart = () => {
           >
             <>Continuar com a entrega</>
           </button>
-          <Payment valorTotal={formataPreco(getTotalPrice())} />
+          <Payment valorTotal={parseToBRL(getTotalPrice())} />
         </Sidebar>
       </CartContainer>
     </>
