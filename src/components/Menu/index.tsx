@@ -29,7 +29,7 @@ const Menu = ({ title }: Props) => {
         {Array.isArray(cardapio) && cardapio.length > 0 ? (
           cardapio.map((prato) => <MenuL key={prato.id} food={prato} />)
         ) : (
-          <p>Loading...</p>
+          <p title="carregando">Loading...</p>
         )}
       </FoodList>
     </div>

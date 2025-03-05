@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colours } from '../../styles'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -17,7 +17,7 @@ export const CheckoutContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  color: ${cores.branco};
+  color: ${colours.white};
   display: none;
   justify-content: flex-end;
   position: fixed;
@@ -28,7 +28,7 @@ export const CheckoutContainer = styled.div`
 `
 
 export const CheckoutCard = styled.div`
-  background-color: ${cores.rosa};
+  background-color: ${colours.pink};
   width: 360px;
   height: 1624px;
   position: relative;
@@ -54,8 +54,8 @@ export const CheckoutButton = styled.button`
   width: 344px;
   height: 24px;
   margin-bottom: 8px;
-  background-color: ${cores.rosaClaro};
-  color: ${cores.rosa};
+  background-color: ${colours.lightPink};
+  color: ${colours.pink};
   font-size: 14px;
   font-weight: 700;
   line-height: 16px;

@@ -1,17 +1,17 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colours } from '../../styles'
 import { Link } from 'react-router-dom'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled(Link)`
-  background-color: ${cores.branco};
+  background-color: ${colours.white};
   margin-bottom: 48px;
-  border: 1px solid ${cores.rosa};
+  border: 1px solid ${colours.pink};
   width: 472px;
   height: 410px;
   position: relative;
   text-decoration: none;
-  color: ${cores.rosa};
+  color: ${colours.pink};
   display: block;
 
   img {
@@ -40,8 +40,8 @@ export const CardDescription = styled.p`
   margin-right: 8px;
 `
 export const CardButton = styled.button`
-  background-color: ${cores.rosa};
-  color: ${cores.branco};
+  background-color: ${colours.pink};
+  color: ${colours.white};
   width: 82px;
   height: 24px;
   font-size: 14px;
@@ -59,7 +59,7 @@ export const Infos = styled.div`
   right: 16px;
 `
 export const Ranking = styled.div`
-  color: ${cores.rosa};
+  color: ${colours.pink};
   font-size: 18px;
   line-height: 22px;
   font-weight: 700;

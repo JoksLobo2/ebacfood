@@ -1,11 +1,11 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colours } from '../../styles'
 
 export const Card = styled.div`
   max-width: 320px;
   height: 338px;
-  background-color: ${cores.rosa};
-  color: ${cores.branco};
+  background-color: ${colours.pink};
+  color: ${colours.white};
   padding: 8px;
 `
 export const CardImg = styled.img`
@@ -27,8 +27,8 @@ export const CardDescription = styled.p`
 export const CardButton = styled.button`
   width: 100%;
   height: 24px;
-  color: ${cores.rosa};
-  background-color: ${cores.branco};
+  color: ${colours.pink};
+  background-color: ${colours.white};
   font-size: 14px;
   line-height: 16px;
   font-weight: 700;

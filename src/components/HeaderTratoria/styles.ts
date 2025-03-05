@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import vetor from '../../assets/images/Vector.png'
-import { cores } from '../../styles'
+import { colours } from '../../styles'
 
 export const HeaderBar = styled.div`
   background-image: url(${vetor});
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: ${cores.rosaClaro};
+  background-color: ${colours.lightPink};
   width: 100%;
   height: 186px;
   display: flex;
@@ -38,7 +38,7 @@ export const Imagem = styled.div`
   display: block;
   background-repeat: no-repeat;
   background-size: cover;
-  color: ${cores.branco};
+  color: ${colours.white};
 `
 export const Italiana = styled.h3`
   font-size: 32px;

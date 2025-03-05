@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colours } from '../../styles'
 import lixeira from '../../assets/images/lixeira-de-reciclagem 1.png'
 
 export const Overlay = styled.div`
@@ -26,7 +26,7 @@ export const CartContainer = styled.div`
   }
 `
 export const Sidebar = styled.aside`
-  background-color: ${cores.rosa};
+  background-color: ${colours.pink};
   z-index: 1;
   padding: 32px 8px 16px 8px;
   max-width: 360px;
@@ -37,8 +37,8 @@ export const Sidebar = styled.aside`
     width: 100%;
     height: 24px;
     border: none;
-    background-color: ${cores.branco};
-    color: ${cores.rosa};
+    background-color: ${colours.white};
+    color: ${colours.pink};
     font-size: 14px;
     font-weight: 700;
     line-height: 16px;
@@ -49,7 +49,7 @@ export const Prices = styled.p`
   font-size: 14px;
   font-weight: 700;
   line-height: 16px;
-  color: ${cores.branco};
+  color: ${colours.white};
 `
 export const PricesContainer = styled.div`
   display: flex;
@@ -58,7 +58,7 @@ export const PricesContainer = styled.div`
   margin-bottom: 16px;
 `
 export const CartItem = styled.li`
-  background-color: ${cores.branco};
+  background-color: ${colours.white};
   display: flex;
   padding: 8px;
   margin-bottom: 16px;

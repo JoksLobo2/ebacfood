@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colours } from '../../styles'
 
 export const FooterContainer = styled.footer`
-  background-color: ${cores.rosaClaro};
+  background-color: ${colours.lightPink};
   padding: 40px 0;
   display: flex;
   flex-direction: column;

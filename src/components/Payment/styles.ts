@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colours } from '../../styles'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -17,7 +17,7 @@ export const PaymentContainer = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  color: ${cores.branco};
+  color: ${colours.white};
   display: none;
   justify-content: flex-end;
   position: fixed;
@@ -35,7 +35,7 @@ export const PaymentContainer = styled.div`
 `
 
 export const PaymentCard = styled.div`
-  background-color: ${cores.rosa};
+  background-color: ${colours.pink};
   width: 360px;
   height: 1624px;
   position: relative;
@@ -43,11 +43,11 @@ export const PaymentCard = styled.div`
   padding: 32px 8px 0 8px;
 
   h2 {
-    color: ${cores.branco};
+    color: ${colours.white};
   }
 
   p {
-    color: ${cores.branco};
+    color: ${colours.white};
   }
 `
 
@@ -57,7 +57,7 @@ export const InputGroup = styled.div`
     font-size: 14px;
     font-weight: 700;
     line-height: 16px;
-    color: ${cores.rosaClaro};
+    color: ${colours.lightPink};
     margin-bottom: 8px;
   }
 
@@ -65,7 +65,7 @@ export const InputGroup = styled.div`
     display: block;
     width: 100%;
     height: 32px;
-    background-color: ${cores.rosaClaro};
+    background-color: ${colours.lightPink};
     border: none;
     margin-bottom: 8px;
   }
@@ -97,8 +97,8 @@ export const PaymentButton = styled.button`
   width: 344px;
   height: 24px;
   margin-bottom: 8px;
-  background-color: ${cores.rosaClaro};
-  color: ${cores.rosa};
+  background-color: ${colours.lightPink};
+  color: ${colours.pink};
   font-size: 14px;
   font-weight: 700;
   line-height: 16px;

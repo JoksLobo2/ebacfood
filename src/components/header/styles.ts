@@ -1,12 +1,12 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colours } from '../../styles'
 import vetor from '../../assets/images/Vector.png'
 
 export const HeaderBar = styled.header`
   background-image: url(${vetor});
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: ${cores.rosaClaro};
+  background-color: ${colours.lightPink};
   height: 384px;
   display: flex;
   flex-direction: column;

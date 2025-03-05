@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colours } from '../../styles'
 
 export const TagContainer = styled.div`
-  background-color: ${cores.rosa};
-  color: ${cores.rosaClaro};
+  background-color: ${colours.pink};
+  color: ${colours.lightPink};
   font-size: 12px;
   line-height: 14px;
   font-weight: 700;
