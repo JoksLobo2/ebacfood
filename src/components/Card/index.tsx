@@ -88,14 +88,14 @@ const Card = () => {
   })
 
   const getErrorMessage = (fieldName: string, message?: string) => {
-    const estaAlterado = fieldName in form.touched
-    const estaInvalido = fieldName in form.errors
+    const isTouched = fieldName in form.touched
+    const isInvalid = fieldName in form.errors
 
-    if (estaAlterado && estaInvalido) return message
+    if (isTouched && isInvalid) return message
     return ''
   }
 
-  const continuarPagamento = () => {
+  const toPay = () => {
     const formData = {
       name: form.values.name,
       adress: form.values.adress,
@@ -196,7 +196,7 @@ const Card = () => {
           <CheckoutButton
             onClick={(e) => {
               e.preventDefault() // Previne a submissão do formulário
-              continuarPagamento()
+              toPay()
             }}
             className="firstButton"
           >

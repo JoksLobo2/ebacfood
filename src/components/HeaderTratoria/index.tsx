@@ -7,14 +7,7 @@ import { Restaurante } from '../../pages/Restaurante'
 import { RootReducer } from '../../store'
 
 import logo from '../../assets/images/logo.png'
-import {
-  HeaderBar,
-  SectionTitle,
-  CartButton,
-  Imagem,
-  Italiana,
-  RestauranteName
-} from './styles'
+import * as S from './styles'
 
 const RestauranteHeader = () => {
   const dispatch = useDispatch()
@@ -37,24 +30,24 @@ const RestauranteHeader = () => {
 
   return (
     <>
-      <HeaderBar>
+      <S.HeaderBar>
         <div>
-          <SectionTitle>Restaurantes</SectionTitle>
+          <S.SectionTitle>Restaurantes</S.SectionTitle>
           <Link to="/">
             <img src={logo} alt="Logo" />
           </Link>
-          <CartButton onClick={openCart}>
+          <S.CartButton onClick={openCart}>
             {items.length} produto(s) no carrinho
-          </CartButton>
+          </S.CartButton>
         </div>
-      </HeaderBar>
+      </S.HeaderBar>
       {restaurante && (
-        <Imagem style={{ backgroundImage: `url(${restaurante.capa})` }}>
+        <S.Imagem style={{ backgroundImage: `url(${restaurante.capa})` }}>
           <div className="container">
-            <Italiana>{restaurante.tipo}</Italiana>
-            <RestauranteName>{restaurante.titulo}</RestauranteName>
+            <S.Italiana>{restaurante.tipo}</S.Italiana>
+            <S.RestauranteName>{restaurante.titulo}</S.RestauranteName>
           </div>
-        </Imagem>
+        </S.Imagem>
       )}
     </>
   )

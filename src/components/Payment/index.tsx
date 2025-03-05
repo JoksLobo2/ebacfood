@@ -9,14 +9,7 @@ import { setOrderId } from '../../store/reducers/order'
 import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
 
-import {
-  InputGroup,
-  Overlay,
-  PaymentButton,
-  PaymentCard,
-  PaymentContainer,
-  CardInput
-} from './styles'
+import * as S from './styles'
 
 interface PaymentProps {
   valorTotal: string
@@ -113,20 +106,20 @@ const Payment = ({ valorTotal }: PaymentProps) => {
   })
 
   const getErrorMessage = (fieldName: string, message?: string) => {
-    const estaAlterado = fieldName in form.touched
-    const estaInvalido = fieldName in form.errors
+    const isTouched = fieldName in form.touched
+    const isInvalid = fieldName in form.errors
 
-    if (estaAlterado && estaInvalido) return message
+    if (isTouched && isInvalid) return message
     return ''
   }
 
   return (
     <>
       <form onSubmit={form.handleSubmit}>
-        <PaymentContainer className={isOpen ? 'is-open' : ''}>
-          <Overlay onClick={closePayment} />
-          <PaymentCard>
-            <InputGroup>
+        <S.PaymentContainer className={isOpen ? 'is-open' : ''}>
+          <S.Overlay onClick={closePayment} />
+          <S.PaymentCard>
+            <S.InputGroup>
               <ul>
                 <h2>Pagamento - Valor a pagar {valorTotal}</h2>
                 <li>
@@ -141,7 +134,7 @@ const Payment = ({ valorTotal }: PaymentProps) => {
                   />
                   <small>{getErrorMessage('name', form.errors.name)}</small>
                 </li>
-                <CardInput>
+                <S.CardInput>
                   <ul>
                     <li>
                       <label htmlFor="cardnumber">Número do cartão</label>
@@ -174,8 +167,8 @@ const Payment = ({ valorTotal }: PaymentProps) => {
                       </small>
                     </li>
                   </ul>
-                </CardInput>
-                <CardInput>
+                </S.CardInput>
+                <S.CardInput>
                   <ul>
                     <li>
                       <label htmlFor="expiremonth">Mês de vencimento</label>
@@ -211,21 +204,21 @@ const Payment = ({ valorTotal }: PaymentProps) => {
                       </small>
                     </li>
                   </ul>
-                </CardInput>
+                </S.CardInput>
               </ul>
-            </InputGroup>
-            <PaymentButton
+            </S.InputGroup>
+            <S.PaymentButton
               onClick={closePaymentOpenConfirm}
               type="submit"
               className="firstButton"
             >
               Finalizar pagamento
-            </PaymentButton>
-            <PaymentButton onClick={closePaymentOpenCheckout}>
+            </S.PaymentButton>
+            <S.PaymentButton onClick={closePaymentOpenCheckout}>
               Voltar para edição de endereço
-            </PaymentButton>
-          </PaymentCard>
-        </PaymentContainer>
+            </S.PaymentButton>
+          </S.PaymentCard>
+        </S.PaymentContainer>
       </form>
     </>
   )

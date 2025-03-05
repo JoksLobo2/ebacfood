@@ -1,14 +1,5 @@
 import Tag from '../Tag'
-import {
-  Card,
-  CardDescription,
-  CardTitle,
-  CardButton,
-  Infos,
-  Ranking,
-  TitleContainer,
-  StyledLink
-} from './styles'
+import * as S from './styles'
 
 type Props = {
   title: string
@@ -38,25 +29,25 @@ const Restaurantes = ({
   }
 
   return (
-    <Card to={`/restaurante/${id}`}>
+    <S.Card to={`/restaurante/${id}`}>
       <img src={image} alt="Hioki Sushi" />
-      <Infos>
+      <S.Infos>
         {infos.map((info) => (
           <Tag key={info}>{info}</Tag>
         ))}
-      </Infos>
-      <TitleContainer>
-        <CardTitle>{title}</CardTitle>
-        <Ranking>
+      </S.Infos>
+      <S.TitleContainer>
+        <S.CardTitle>{title}</S.CardTitle>
+        <S.Ranking>
           {rate}
           <img src={icon} />
-        </Ranking>
-      </TitleContainer>
-      <CardDescription>{getDescription(description)}</CardDescription>
-      <StyledLink to={`/restaurante/${id}`}>
-        <CardButton type="button">Saiba mais</CardButton>
-      </StyledLink>
-    </Card>
+        </S.Ranking>
+      </S.TitleContainer>
+      <S.CardDescription>{getDescription(description)}</S.CardDescription>
+      <S.StyledLink to={`/restaurante/${id}`}>
+        <S.CardButton type="button">Saiba mais</S.CardButton>
+      </S.StyledLink>
+    </S.Card>
   )
 }
 export default Restaurantes

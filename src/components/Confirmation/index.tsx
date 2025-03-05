@@ -3,14 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { closeConfirm } from '../../store/reducers/confirm'
 
-import {
-  CheckoutContainer,
-  Overlay,
-  CheckoutCard,
-  CheckoutButton
-} from './styles'
+import * as S from './styles'
 
-const Confirmacao = () => {
+const Confirmation = () => {
   const { isOpen } = useSelector((state: RootReducer) => state.confirm)
 
   const dispatch = useDispatch()
@@ -20,12 +15,12 @@ const Confirmacao = () => {
 
   const orderId = useSelector((state: RootReducer) => state.order.orderId)
 
-  console.log('Order ID in Confirmacao:', orderId)
+  console.log('Order ID in Confirmation:', orderId)
 
   return (
-    <CheckoutContainer className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={closeConfirmation} />
-      <CheckoutCard>
+    <S.CheckoutContainer className={isOpen ? 'is-open' : ''}>
+      <S.Overlay onClick={closeConfirmation} />
+      <S.CheckoutCard>
         <h2>Pedido realizado - {orderId}</h2>
         <p>
           Estamos felizes em informar que seu pedido já está em processo de
@@ -43,10 +38,10 @@ const Confirmacao = () => {
           Esperamos que desfrute de uma deliciosa e agradável experiência
           gastronômica. Bom apetite!
         </p>
-        <CheckoutButton type="submit">Concluir</CheckoutButton>
-      </CheckoutCard>
-    </CheckoutContainer>
+        <S.CheckoutButton type="submit">Concluir</S.CheckoutButton>
+      </S.CheckoutCard>
+    </S.CheckoutContainer>
   )
 }
 
-export default Confirmacao
+export default Confirmation

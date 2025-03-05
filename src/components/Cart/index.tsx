@@ -10,14 +10,7 @@ import { parseToBRL } from '../../utils'
 
 import Payment from '../Payment'
 
-import {
-  Overlay,
-  CartContainer,
-  Sidebar,
-  Prices,
-  PricesContainer,
-  CartItem
-} from './styles'
+import * as S from './styles'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -45,25 +38,25 @@ const Cart = () => {
 
   return (
     <>
-      <CartContainer className={isOpen ? 'is-open' : ''}>
-        <Overlay onClick={closeCart} />
-        <Sidebar>
+      <S.CartContainer className={isOpen ? 'is-open' : ''}>
+        <S.Overlay onClick={closeCart} />
+        <S.Sidebar>
           <ul>
             {items.map((item) => (
-              <CartItem key={item.id}>
+              <S.CartItem key={item.id}>
                 <img src={item.foto} alt="imagem de uma pizza" />
                 <div>
                   <h3>{item.nome}</h3>
                   <span>{parseToBRL(item.preco)}</span>
                 </div>
                 <button onClick={() => removeItem(item.id)} type="button" />
-              </CartItem>
+              </S.CartItem>
             ))}
           </ul>
-          <PricesContainer>
-            <Prices>Valor total </Prices>
-            <Prices> {parseToBRL(getTotalPrice())}</Prices>
-          </PricesContainer>
+          <S.PricesContainer>
+            <S.Prices>Valor total </S.Prices>
+            <S.Prices> {parseToBRL(getTotalPrice())}</S.Prices>
+          </S.PricesContainer>
           <button
             onClick={openCheckoutAndCloseCart}
             type="button"
@@ -72,8 +65,8 @@ const Cart = () => {
             <>Continuar com a entrega</>
           </button>
           <Payment valorTotal={parseToBRL(getTotalPrice())} />
-        </Sidebar>
-      </CartContainer>
+        </S.Sidebar>
+      </S.CartContainer>
     </>
   )
 }
