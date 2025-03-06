@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import vetor from '../../assets/images/Vector.png'
-import { colours } from '../../styles'
+import { breakpoints, colours } from '../../styles'
 
 export const HeaderBar = styled.div`
   background-image: url(${vetor});
@@ -19,6 +19,10 @@ export const HeaderBar = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      max-width: 80%;
+    }
   }
 `
 export const SectionTitle = styled.h3`

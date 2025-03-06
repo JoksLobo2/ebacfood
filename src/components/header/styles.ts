@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colours } from '../../styles'
+import { breakpoints, colours } from '../../styles'
 import vetor from '../../assets/images/Vector.png'
 
 export const HeaderBar = styled.header`
@@ -12,6 +12,11 @@ export const HeaderBar = styled.header`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  overflow: visible;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 10px;
+  }
 `
 
 export const Logo = styled.img`
@@ -24,4 +29,8 @@ export const Title = styled.h1`
   line-height: 42px;
   font-weight: 900;
   margin-top: 180px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: 100px;
+  }
 `

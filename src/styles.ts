@@ -29,5 +29,13 @@ export const GlobalCss = createGlobalStyle`
     max-width:1024px;
     width:100%;
     margin:0 auto;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      max-width: 80%;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      max-width: 80%;
+    }
   }
 `

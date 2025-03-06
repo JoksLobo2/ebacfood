@@ -1,12 +1,19 @@
 import styled from 'styled-components'
-import { colours } from '../../styles'
+import { breakpoints, colours } from '../../styles'
 
 export const Card = styled.div`
   max-width: 320px;
+  width: 100%;
   height: 338px;
   background-color: ${colours.pink};
   color: ${colours.white};
   padding: 8px;
+  margin-bottom: 16px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 100%;
+    height: 100%;
+  }
 `
 export const CardImg = styled.img`
   width: 100%;

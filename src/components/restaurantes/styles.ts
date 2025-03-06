@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colours } from '../../styles'
+import { breakpoints, colours } from '../../styles'
 import { Link } from 'react-router-dom'
 import { TagContainer } from '../Tag/styles'
 
@@ -7,7 +7,8 @@ export const Card = styled(Link)`
   background-color: ${colours.white};
   margin-bottom: 48px;
   border: 1px solid ${colours.pink};
-  width: 472px;
+  max-width: 472px;
+  width: 100%;
   height: 410px;
   position: relative;
   text-decoration: none;
@@ -23,6 +24,14 @@ export const Card = styled(Link)`
 
   ${TagContainer} {
     margin-right: 8px;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 100%;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
   }
 `
 export const CardTitle = styled.h3`

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { colours } from '../../styles'
+import { breakpoints, colours } from '../../styles'
 
 export const FoodList = styled.ul`
   width: 100%;
@@ -8,6 +8,10 @@ export const FoodList = styled.ul`
   gap: 32px;
   margin-top: 56px;
   margin-bottom: 122px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+  }
 `
 export const Modal = styled.div`
   position: fixed;
@@ -35,8 +39,13 @@ export const Modal = styled.div`
 `
 export const ModalContent = styled.div`
   max-width: 1024px;
+  width: 100%;
   position: relative;
   z-index: 1;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    width: 100%;
+  }
 
   > div {
     display: flex;

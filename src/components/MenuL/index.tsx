@@ -32,7 +32,7 @@ const MenuL = ({ food }: { food: Prato }) => {
 
   const getDescription = (description: string) => {
     if (description.length > 233) {
-      return description.slice(0, 150) + '...'
+      return description.slice(0, 110) + '...'
     }
     return description
   }
