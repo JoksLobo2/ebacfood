@@ -22,6 +22,10 @@ const Cart = () => {
   }
 
   const openCheckoutAndCloseCart = () => {
+    if (items.length === 0) {
+      alert('O carrinho está vazio!')
+      return
+    }
     dispatch(openCheck())
     dispatch(close())
   }

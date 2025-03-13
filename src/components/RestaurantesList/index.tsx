@@ -21,8 +21,8 @@ const RestaurantesList = ({ restaurantes }: Props) => {
   }
 
   return (
-    <Container>
-      <div className="container">
+    <div className="container">
+      <div>
         <List>
           {restaurantes.map((restaurante) => (
             <li key={restaurante.id}>
@@ -39,7 +39,7 @@ const RestaurantesList = ({ restaurantes }: Props) => {
           ))}
         </List>
       </div>
-    </Container>
+    </div>
   )
 }
 

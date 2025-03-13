@@ -22,6 +22,7 @@ export const HeaderBar = styled.div`
 
     @media (max-width: ${breakpoints.desktop}) {
       max-width: 80%;
+      flex-direction: column;
     }
   }
 `

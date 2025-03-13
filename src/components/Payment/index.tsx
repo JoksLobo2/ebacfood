@@ -55,7 +55,7 @@ const Payment = ({ valorTotal }: PaymentProps) => {
         .max(3, 'O código de segurança só pode ter 3 caracteres')
         .required('Campo obrigatório'),
       expiremonth: Yup.string().required('Campo obrigatório'),
-      expireyear: Yup.string().required('Campo onrigatório')
+      expireyear: Yup.string().required('Campo obrigatório')
     }),
     onSubmit: async (values) => {
       const checkoutData = JSON.parse(

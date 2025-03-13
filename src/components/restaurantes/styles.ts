@@ -32,6 +32,8 @@ export const Card = styled(Link)`
 
   @media (max-width: ${breakpoints.tablet}) {
     width: 100%;
+    max-width: 388px;
+    height: 480px;
   }
 `
 export const CardTitle = styled.h3`
@@ -87,6 +89,10 @@ export const TitleContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 8px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 390px;
+  }
 `
 export const StyledLink = styled(Link)`
   color: white;

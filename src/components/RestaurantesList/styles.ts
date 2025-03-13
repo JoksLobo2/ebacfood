@@ -15,7 +15,12 @@ export const List = styled.ul`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin-right: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 80%;
+    word-wrap: break-word;
+    padding: 20px;
   }
 
   icon {

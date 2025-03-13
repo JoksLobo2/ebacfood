@@ -38,6 +38,8 @@ const Card = () => {
     dispatch(open())
   }
 
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
   const form = useFormik({
     initialValues: {
       name: '',
