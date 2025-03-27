@@ -98,14 +98,25 @@ const Card = () => {
   }
 
   const toPay = () => {
+    // Verifica se todos os campos estão válidos
+    if (
+      Object.values(form.values).some((value) => value === '') ||
+      Object.keys(form.errors).length > 0
+    ) {
+      alert(
+        'Por favor, preencha todos os campos obrigatórios corretamente antes de continuar.'
+      )
+      return
+    }
+
     const formData = {
       name: form.values.name,
       adress: form.values.adress,
       city: form.values.city,
       zipCode: form.values.zipCode,
-      number: form.values.number,
-      complement: form.values.complement
+      number: form.values.number
     }
+
     sessionStorage.setItem('checkoutData', JSON.stringify(formData))
     closeCheckoutAndOpenPayment()
   }

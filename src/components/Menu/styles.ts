@@ -50,6 +50,11 @@ export const ModalContent = styled.div`
 
   @media (max-width: ${breakpoints.desktop}) {
     width: 100%;
+
+    > div {
+      height: 344px;
+      display: flex;
+    }
   }
 
   @media (max-width: ${breakpoints.tablet}) {

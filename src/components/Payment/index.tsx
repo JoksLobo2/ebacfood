@@ -31,6 +31,27 @@ const Payment = ({ valorTotal }: PaymentProps) => {
   }
 
   const closePaymentOpenConfirm = () => {
+    // Verifica se os campos obrigatórios estão preenchidos corretamente
+    const requiredFields: Array<keyof typeof form.values> = [
+      'name',
+      'cardnumber',
+      'safetycode',
+      'expiremonth',
+      'expireyear'
+    ]
+
+    const areFieldsValid = requiredFields.every(
+      (field) => form.values[field] !== ''
+    )
+
+    if (!areFieldsValid || Object.keys(form.errors).length > 0) {
+      alert(
+        'Por favor, preencha todos os campos obrigatórios corretamente antes de continuar.'
+      )
+      return
+    }
+
+    // Se tudo estiver válido, continuar o fluxo
     dispatch(closeP())
     dispatch(openConfirm())
   }
